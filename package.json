@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "api:deploy": "pylon build && wrangler deploy",
+    "api:watch": "pylon dev -c \"wrangler dev\" --client --client-path gqty/index.ts",
+    "cf-typegen": "wrangler types",
+    "database:destroy": "npx wrangler d1 execute <database-name> --file database/destroy.sql",
+    "database:create": "npx wrangler d1 execute <database-name> --file database/create.sql",
+    "database:populate": "npx wrangler d1 execute <database-name> --file database/test-data.sql",
+    "database:recreate": "npm run database:destroy && npm run database:create && npm run database:populate",
+    "prepare": "husky install",
+    "test": "exit"
+  },
+  "dependencies": {
+    "@getcronit/pylon": "^2.0.0"
+  },
+  "devDependencies": {
+    "@getcronit/pylon-dev": "^1.0.0",
+    "@cloudflare/vitest-pool-workers": "^0.4.5",
+    "@cloudflare/workers-types": "^4.20240903.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.5.2",
+    "wrangler": "^3.60.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getcronit/pylon.git"
+  },
+  "homepage": "https://pylon.cronit.io"
+}

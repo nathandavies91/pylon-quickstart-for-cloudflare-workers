@@ -1,0 +1,16 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "api"
+main = ".pylon/index.js"
+compatibility_date = "2024-09-03"
+compatibility_flags = ["nodejs_compat_v2"]
+
+[dev]
+port = 8080
+
+[[d1_databases]]
+binding = "DB"
+database_name = "<database-name>"
+database_id = "<database-id>"
+
+[observability]
+enabled = false
